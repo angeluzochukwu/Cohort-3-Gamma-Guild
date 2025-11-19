@@ -2524,6 +2524,343 @@ More confirmations → less chance of a reorg.
 Once validators sign, the block becomes irreversible instantly.
 
 
+# Part 3 
+
+# 1) Custodial vs Non-Custodial Wallets
+# Custodial wallets 
+
+**What they are:** Wallets where a third party (an exchange, custodian, or service) holds and manages the private keys on your behalf. You trust the provider to custody and secure keys and to execute transactions for you. 
+
+**How they work:**
+
+* Provider generates and stores private keys (often in multi-user HSMs or custodial key stores).
+* Your account is represented by an internal ledger entry at the provider; on-chain transactions are executed by the provider’s systems.
+* Authentication for you is via username/password + 2FA; recovery is provider-managed (KYC, account recovery flows). 
+
+**Advantages**
+
+* Convenience and beginner-friendly (no private-key management).
+* Integrated fiat on/off ramps, customer support, and built-in recovery flows.
+* Can offer custodial features like insured hot wallets and compliance tools.
+
+**Risks**
+
+* You don’t control private keys → “not your keys, not your crypto.”
+* Centralized attack surface: breaches, insider threats, insolvency, regulatory seizure.
+* Potential withdrawal limits, KYC/privacy tradeoffs. 
+
+**5 examples of custodial wallet providers**
+
+* Coinbase (Custodial wallets via exchange accounts).
+* Binance (exchange wallet custodial). 
+* Kraken (exchange custodial services).
+* Gemini (exchange/custody services).
+* Blockchain.com (offers custodial/hosted services alongside non-custodial options).
+
+
+# Non-custodial wallets 
+
+**What they are:** Wallets where the user controls their private keys (self-custody). The wallet software or hardware stores/generates keys locally and the user is solely responsible for backups and recovery. 
+
+**How they work:**
+
+* Wallet creates a private key or a deterministic seed phrase (BIP39 etc.) locally.
+* Private key signs transactions locally; signed transactions are broadcast to the network.
+* Recovery uses seed phrase (mnemonic) to re-derive private keys. No central service has access. 
+
+**Advantages**
+
+* Full control and ownership of funds.
+* Better privacy (no KYC at wallet level), direct interaction with DeFi/dApps.
+* No custodial counterparty risk.
+
+**Risks**
+
+* You alone are responsible for key/seed security; loss or theft means irreversible loss.
+* User mistakes (phishing dapps, approving malicious contracts) can lead to instant loss.
+* Recovery is only as good as your seed backup practices. 
+
+**5 examples of non-custodial wallet providers**
+
+* MetaMask (browser/mobile Ethereum & EVM wallet). 
+* Trust Wallet (mobile multi-chain non-custodial). 
+* Exodus (desktop/mobile non-custodial).
+* Argent (smart-contract wallet with social recovery for Ethereum).
+* Rainbow (Ethereum mobile wallet).
+  
+
+
+# Comparison table — Custodial vs Non-custodial
+
+| Feature            |                                       Custodial | Non-custodial                                             |
+| ------------------ | ----------------------------------------------: | --------------------------------------------------------- |
+| **Key control**    |                     Provider holds private keys | User holds private keys / seed                            |
+| **Security model** |      Centralized: provider security / insurance | Decentralized: relies on user practices & device security |
+| **Convenience**    |                High — easy sign-in, fiat on/off | Moderate — needs key backup, more steps                   |
+| **Recovery**       |                          Provider-managed (KYC) | Seed phrase / backup only                                 |
+| **Privacy**        |                               Lower (KYC, logs) | Higher (no KYC required at wallet)                        |
+| **Best for**       | Beginners, frequent trading, custodial services | Users needing full control, DeFi power users              |
+| **Risk**           |         Exchange hack/seizure, platform failure | User error, phishing, lost seed = irreversible loss       |
+
+
+
+# When to use each scenarios favoring custodial wallets
+
+* You want easy fiat on/off and fiat custody (buy/sell quickly).
+* You prefer customer support and built-in recovery.
+* Smaller amounts for trading or payments where convenience matters.
+
+**Scenarios requiring non-custodial wallets**
+
+* You need complete control over keys (self-custody).
+* You plan to interact with DeFi, NFTs, or dApps where signing with your own key is required.
+* You want privacy and to avoid counterparty risk.
+
+**Recommended strategy for beginners**
+
+* Start with custodial wallets (regulated exchange) for learning and small amounts; move larger balances to non-custodial cold storage as you learn.
+* Use two accounts:
+* (1) custodial exchange for trading,
+* (2) non-custodial hardware wallet for long-term holdings.
+
+**Recommended strategy for active Web3 users**
+
+* Use a hybrid setup: hardware wallet (cold) for long-term holdings and big-value multisig, and a non-custodial hot wallet (software) for day-to-day DeFi interaction but avoid keeping large balances in hot wallets. Use multisig and smart-contract wallets (e.g., Gnosis Safe) for higher security. 
+
+
+# 2) Hot vs Cold Wallets
+
+# Hot wallets
+
+**What they are:** 
+They are Wallets connected to the internet (desktop, mobile, web extensions). Examples: browser extension wallets, mobile wallets, custodial exchange wallets. 
+
+**How they work:** Private keys are stored on an internet-connected device or with a provider. They sign transactions and broadcast them directly online.
+
+**Security implications**
+
+* Easier target for online attacks: phishing, malware, browser exploits.
+* More convenient but less secure than offline storage; suitable for small/frequent amounts.
+
+**Best use cases**
+
+* Daily spending, small balances, interacting with dApps, trading, NFT minting.
+
+**3 hot wallet examples**
+
+* MetaMask (extension/mobile). 
+* Trust Wallet (mobile). 
+* Coinbase Wallet (mobile non-custodial, or Coinbase exchange for custodial). 
+
+# Cold wallets
+
+**What they are:** 
+They are Wallets/offline devices not connected to the internet for private key storage (hardware wallets, paper wallets, air-gapped devices). ([Trading 212][8])
+
+**How hardware wallets work (high level):**
+
+* Hardware device generates and stores private keys inside secure chip.
+* Transaction data is sent to device; the device signs the transaction internally; only the signed transaction (not the private key) is returned to the host computer for broadcasting.
+* Verification screens on device help prevent blind approvals. 
+
+**Security benefits**
+
+* Private keys never leave the device; resistant to remote malware/theft.
+* If properly used, cold wallets are the strongest defense vs online attacks.
+
+**Limitations**
+
+* Less convenient for frequent transactions.
+* Physical theft or loss is possible; firmware bugs or supply-chain attacks (rare) exist; users must securely store recovery seed.
+
+**3 hardware wallet examples**
+
+* Ledger Nano S / Nano X. 
+* Trezor Model T / One.
+* Coldcard / BitBox / others (Coldcard is Bitcoin-focused).
+  
+
+
+# Security & convenience comparison
+
+| Metric             |                             Hot Wallet | Cold Wallet                                      |
+| ------------------ | -------------------------------------: | ------------------------------------------------ |
+| **Security level** | Moderate/Lower (online attack surface) | High (offline private key storage)               |
+| **Convenience**    |   High (fast access, dApp interaction) | Low (manual connection, signing)                 |
+| **Cost**           |                Usually free (software) | Hardware purchase (~$50–$200+)                   |
+| **Use cases**      |              Daily use, trading, dApps | Long-term storage, large holdings, high security |
+
+
+# Recommended allocation strategy
+
+ **Small amounts / daily use:** Keep a modest balance in a hot wallet (amount you’re comfortable losing).
+ **Savings / long-term holdings:** Store the majority (e.g., 80–95%) in cold storage (hardware wallet or multisig cold setup).
+ **Middle ground for active users:** Use a hardware-backed hot wallet (Ledger + MetaMask) so you can sign transactions online without exposing private keys.
+ **For very large holdings:** Use multisig (multiple hardware wallets / custodial multisig providers) and geographic split of seeds.
+
+
+
+# 3) Security Best Practices
+
+# Seed phrase security
+
+**What is a seed phrase?**
+
+* Seed phrase is a human-readable list of words (usually 12–24) that encodes the deterministic master seed used to derive private keys (BIP-39 standard commonly used). It’s the master backup for wallet recovery. 
+
+**Why it’s critical**
+
+* Anyone with your seed can recreate your wallet and take all funds. No central authority can reverse theft. 
+**How to store it**
+
+* Write it on paper and store offline in a secure physical location (safe, safety deposit box). Ledger/Trezor recommend a physical copy. Consider metal backups for fire/water resistance. 
+* Do not store seed phrase digitally (no photos, plain text files, cloud storage, or email).
+* Consider split backups (Shamir’s Secret Sharing or multiple geographic copies) for large holdings.
+* Test recovery on a low-value wallet to validate the backup, never reveal words to anyone.
+
+**Common mistakes to avoid**
+
+* Taking photos of seed phrases.
+* Entering seed phrase into websites or browser prompts (phishing).
+* Storing it in password managers or cloud drives.
+* Typing it into a device that might be compromised.
+
+# Common attack vectors & defenses
+
+**Phishing**
+
+* Attack: Fake websites, emails, dApp popups trick you to enter seed or sign malicious transactions.
+* Defense: Bookmark official sites, manually type URLs, verify domain, never paste seed on websites, use hardware wallets for signing. See NIST phishing guidance. 
+
+**Malware**
+
+* Attack: Keyloggers, clipboard hijackers (replace copied address), remote access trojans.
+* Defense: Use hardware wallets (private keys never leave device), keep OS and antivirus updated, avoid downloading unknown software, use a dedicated device for large holdings.
+
+**Social engineering**
+
+* Attack: Scammers impersonate support, friends, or platforms to get you to reveal seed or move funds.
+* Defense: Never give seed to anyone, verify identities out-of-band, treat unsolicited support requests as suspicious.
+
+**Supply-chain attacks**
+
+* Attack: Tampered hardware devices or compromised firmware.
+* Defense: Buy devices from official channels, verify firmware signatures and device fingerprints, initialize devices yourself (do not use pre-initialized devices).
+
+**Malicious contract approvals**
+
+* Attack: Approving unlimited token allowances that let a contract drain tokens later.
+* Defense: Use wallet UI to limit approvals, review transactions before signing, use simulation tools, revoke allowances periodically.
+
+
+# Security checklist 
+# Wallet setup (one-time)
+
+1. **Choose wallet types**: Decide custodial vs non-custodial and hot vs cold according to needs.
+2. **Buy hardware from official store** (if using a hardware wallet). Verify packaging. 
+3. **Initialize device offline**; create a new wallet and write down seed phrase **by hand** on paper/metal. Do not photograph or digitize. 
+4. **Test recovery**: Restore seed on a spare device using a small test amount before moving large funds.
+5. **Enable 2FA** on custodial accounts (use authenticator app, not SMS).
+6. **Set up a secondary recovery plan** (Shamir, multisig, or geographic split) for large holdings.
+
+# Day-to-day practices
+
+1. Never reveal your seed to anyone or enter it online.
+2. Verify URLs and bookmarks before visiting exchange or wallet sites. 
+3. Use hardware signing for significant transactions.
+4. Keep minimal balance in hot wallets (only what you need).
+5. Use unique, strong passwords and a reputable password manager for non-seed credentials (but *never* store seed there).
+6. Regularly audit contract approvals and revoke unused approvals.
+7. Segregate devices: Use a dedicated device for key activities (or at minimum limit software installed on the device you use with your wallet).
+8. Be cautious with browser extensions and unknown dApps.
+
+# Emergency procedures (if you suspect compromise)
+
+1. Move funds immediately from any wallet you control to a fresh wallet (if you can sign safely). For compromised seeds, assume irrecoverable: transfer remaining funds to a new wallet you initialize on a trusted device.
+2. Revoke allowances on affected tokens using a reputable revocation tool (if possible before funds are drained).
+3. Contact exchange support if custodial account is compromised and provide relevant KYC and incident detail.
+4. Freeze / notify counterparties if smart contract multisig involved.
+5. Report phishing sites to your browser and to anti-phishing authorities; change passwords for other affected accounts. 
+
+# Recommended practical setups (by user profile)
+
+1. **Absolute beginner**
+
+   * Use a reputable custodial exchange (small amounts) for learning.
+   * Once confident, buy a hardware wallet and move >20–30% of holdings to cold storage.
+
+2. **Casual user (occasional trading + NFTs)**
+
+   * Hot software wallet for day-to-day activities (small balance).
+   * Hardware wallet for savings and for signing high-value transactions.
+
+3. **Active DeFi user / power user**
+
+   * Hardware wallet + dedicated hot wallet combination; use hardware for signing high-value txs.
+   * Consider a smart-contract wallet with social recovery (e.g., Argent) or multisig (Gnosis Safe) for high value / multi-person control.
+
+4. **Institution / high net worth**
+
+   * Multi-party custody (multisig), professional custodians with insurance, regular audits, strict operational security (air-gapped signing, HSMs).
+
+# Part 4: 
+# Testnets & Blockchain Explorers
+
+**1. Testnets**
+
+**What are Testnets?**
+- Testnets are alternative blockchain networks used for testing without risking real assets.
+- They exist so developers and users can experiment safely.
+- They differ from mainnet because tokens have no real-world value, and the network may be unstable.
+
+**Popular Testnets**
+**Sepolia Testnet (Ethereum):** Lightweight, used for testing smart contracts, supported by faucets.
+**Mumbai Testnet (Polygon):** Polygon’s major testnet for dApps and contract deployment.
+**Others:** Goerli (deprecating), Holesky, BNB Testnet.
+
+**Comparison:**
+- Sepolia: Ethereum-focused, stable, widely supported.
+- Mumbai: Polygon-focused, cheaper fees, fast block times.
+- Holesky: Large-scale Ethereum testnet for staking simulations.
+
+# How to Use Testnets
+- Connect via MetaMask by enabling "Show test networks”.
+- Get test tokens from faucets.
+- You can practice sending transactions, deploying smart contracts, interacting with dApps.
+- Limitations: Slow faucets, some features unavailable, occasional instability.
+
+# Hands-On Practice (Guide)
+1. Switch to Sepolia in MetaMask.
+2. Visit a Sepolia faucet (e.g., Alchemy).
+3. Request test ETH.
+4. Send a small test transaction to another wallet.
+2. Blockchain Explorers
+
+**What are Blockchain Explorers?**
+- Blockchain explorers are tools for viewing blockchain data in real time.
+- They help verify transactions, view wallet activity, explore smart contracts, and track network status.
+
+**Etherscan Deep Dive:**
+- Search for transactions using Tx hash.
+- Transaction details include: block number, gas used, status, fees, sender, receiver.
+- Explore wallets to see balances, tokens, history.
+- View smart contracts, read/write functions, verify source code.
+- Token approvals page helps you revoke risky approvals.
+- Gas tracker shows current gas price levels.
+
+**Other Explorers:**
+- Polygonscan (Polygon)
+- BscScan (BNB Chain)
+- Solscan (Solana)
+Use-case varies based on blockchain.
+
+**Practical Use Cases** 
+- Verify NFT ownership using the token ID on Etherscan.
+- Check transaction status (Pending/Success/Failed).
+- Investigate wallets for transparency.
+- Verify smart contract code before interacting.
+- Track gas prices before sending transactions.
+
 # References and Further Reading
 
 1. Nakamoto, S. (2008). "Bitcoin: A Peer-to-Peer Electronic Cash System." https://bitcoin.org/bitcoin.pdf
