@@ -10,7 +10,7 @@
 ## Week 2: Blockchain & Web3 Deep Dive Research (Day 1-3)
 ## Student Name: Uzochukwu Angel Ifechukwu 
 Date: Wednesday, 19th November, 2025  
-**Tweet Link:** [Your Twitter thread link - add after posting]
+**Tweet Link:** [https://x.com/ife_angee/status/1993030264138956886?t=pfkR71LghAKTDvOgxvVBpQ&s=19]
 
 ### Consensus Mechanisms Deep Dive: Proof of Work vs Proof of Stake ##
 
