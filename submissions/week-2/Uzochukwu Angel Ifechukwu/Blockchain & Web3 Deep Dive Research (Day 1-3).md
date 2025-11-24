@@ -12,7 +12,7 @@
 Date: Wednesday, 19th November, 2025  
 **Tweet Link:** [Your Twitter thread link - add after posting]
 
-### Consensus Mechanisms Deep Dive: Proof of Work vs Proof of Stake ##
+# Consensus Mechanisms Deep Dive: Proof of Work vs Proof of Stake 
 
 # 1. Proof of Work (PoW) Analysis
 **How PoW Works**
